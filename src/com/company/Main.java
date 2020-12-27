@@ -5,14 +5,14 @@ import java.math.BigDecimal;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        CreditCardFactory factoryCard = new SberCreditCardFactory();
-
-        CreditCard digitCard = factoryCard.createCreditCard("Vasya","Ivanov",TypeCreditCard.DIGITAL);
+        CreditCardFactory digitCardFactory = CreditCardFactoryCreator.createCreditCardFactory(TypeCreditCard.DIGITAL);
+        CreditCard digitCard = digitCardFactory.createCreditCard("Vasya","Ivanov");
         digitCard.addBalance(BigDecimal.valueOf(15000.0));
         System.out.println(digitCard);
 
-        CreditCard goldCard = factoryCard.createCreditCard("Mariya","Petrova",TypeCreditCard.GOLD_CARD_AEROFLOT);
+
+        CreditCardFactory goldCardFactory = CreditCardFactoryCreator.createCreditCardFactory(TypeCreditCard.GOLD_CARD_AEROFLOT);
+        CreditCard goldCard = goldCardFactory.createCreditCard("Mariya","Mariya");
         goldCard.addBalance(BigDecimal.valueOf(200000.0));
         System.out.println(goldCard);
         goldCard.subtractBalance(BigDecimal.valueOf(30000));
